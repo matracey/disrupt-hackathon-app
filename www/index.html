@@ -1,0 +1,68 @@
+<html>
+
+<head>
+	<script src="jquery-2.0.3.js" type="text/javascript"></script>
+	<script src="app.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div id="login-page">
+		fb login goes here<br/>
+		
+		<br/><a id="login-button">Login</a>
+	</div>
+	
+	<div id="choosecommute-page" style:"display:none">
+		<form>
+			What time do you need to be at work? (HH:MM in 24 hours): <input type="text" name="form-time"><br><br/>
+			Start location (postcode): <input type="text" name="start-postcode"><br/>
+			End location (postcode): <input type="text" name="end-postcode"><br/>
+		</form>
+		
+		<br/><a id="choosecommute-next-button">Next</a>
+	</div>
+	
+	<div id="chooseroute-page" style:"display:none">
+		<div class="route" id="ruote1">
+			Start station <div class="station">xxx</div><br/>
+			End station <div class="station">yyy</div><br/>
+			Lines <div class="line">central</div> <div class="line">bakerloo</div><br/>
+		</div>
+		
+		<br/>
+		
+		<div class="route" id="ruote2" style:"display:none">
+			Start <div class="station">fdsf</div><br/>
+			End <div class="station">fds</div><br/>
+			Line <div class="line">jubilee</div> <br/>
+		</div>
+		
+		<br/><a id="chooseroute-next-button">Next</a>
+	</div>
+	
+	<div id="whotoalert-page" style:"display:none">
+		Email addresses<br/>
+		<form>
+			<id class="emailAddress">email1@fdsfs.com</id><br/>
+			<input type="text" name="add-email"> <a id="add-email-button">+</a><br/>
+		</form>
+		
+		<br/><br/>
+		
+		Text messages<br/>
+		<form>
+			<id class="phoneNumber">+444324324324</id><br/>
+			<id class="phoneNumber">+44432424324</id><br/>
+			<input type="text" name="add-number"> <a id="add-number-button">+</a><br/>
+		</form>
+		
+		<br/><a id="whotoalert-next-button">Next</a>
+	</div>
+	
+	<div id="confirmation-page" style:"display:none">
+		you've done it!
+	</div>
+	
+</body>
+
+</html>
