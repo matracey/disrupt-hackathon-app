@@ -19,7 +19,19 @@ var WriteHTML = {
 			
 			$newDiv.append("Duration: <div class='duration'> " + r.duration + " </div>");
 			
-			$newDiv.append("<a onclick='App.selectRoute(" + i + ")'>Select this route</a><br/><br/><br/>");
+			$newDiv.append("<a onclick='App.selectRoute(" + i + ")'>Select this route</a><br/><br/><br/>"); //I need the onclick!
 		});
+	},
+	
+	writeOneNewEmail: function(email) {
+		var $newDiv = $("<div class='emailAddress'>" + email + "</div>");
+		
+		$("#email-addresses-div").append($newDiv);
+	},
+	
+	writeOneNewNumber: function(number) {
+		var $newDiv = $("<div class='phoneNumber'>" + number + "</div>");
+		
+		$("#phone-numbers-div").append($newDiv);
 	}
 }

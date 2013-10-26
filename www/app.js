@@ -1,6 +1,5 @@
 //user data structure, to send to server
 var User = {
-	
 };
 
 var App = {
@@ -20,13 +19,11 @@ var App = {
 		});
 		
 		$("#chooseroute-next-button").on("click", function(e){
-			$("#chooseroute-page").hide();
-			$("#whotoalert-page").show();
+			App.chooseRouteNextClicked();
 		});
 		
 		$("#whotoalert-next-button").on("click", function(e){
-			$("#whotoalert-page").hide();
-			$("#confirmation-page").show();
+			App.whotoalertNextClicked();
 		});
 		
 		
@@ -34,6 +31,9 @@ var App = {
 	
 	loginClicked: function() {
 		$("#login-page").hide();
+		
+		User.id = "demouser" + new Date();
+		
 		$("#choosecommute-page").show();
 	},
 	
@@ -49,7 +49,7 @@ var App = {
 	  var time = $("#choosecommute input[name=form-time]").val() + "UK";
 	  var hhmm = time.split(':');
 	  
-	  var date = new Date(2013, 9, 28);
+	  User.timeAtWork = new Date(2013, 9, 28, parseInt(hhmm[0]), parseInt(hhmm[1]), 0, 0);
 	  
 	  console.log(parseInt(hhmm[0]),parseInt(hhmm[1]));
 	  
@@ -59,7 +59,7 @@ var App = {
 	      travelMode: google.maps.DirectionsTravelMode.TRANSIT,
 	      provideRouteAlternatives: true,
 	      transitOptions: {
-			  arrivalTime: new Date(2013, 9, 28, parseInt(hhmm[0]), parseInt(hhmm[1]), 0, 0)
+			  arrivalTime: User.timeAtWork
 		  }
 	  };
 
@@ -114,9 +114,39 @@ var App = {
 	
 	selectRoute: function(i) {
 		console.log(i, App.possibleRoutes[i]);
+		
+		User.transport = App.possibleRoutes[i];
 	},
 	
+	chooseRouteNextClicked: function() {
+		$("#chooseroute-page").hide();
+		$("#whotoalert-page").show();
+		
+		User.email = [];
+		User.sms = [];
+		
+		$("#add-email-button").on('click', function() {
+			var email = $("#add-email-form input[name=add-email]").val();
+			WriteHTML.writeOneNewEmail(email);
+			User.email.push(email);
+			var email = $("#add-email-form input[name=add-email]").val('');
+		});
+		
+		$("#add-number-button").on('click', function() {
+			var number = $("#add-number-form input[name=add-number]").val();
+			WriteHTML.writeOneNewNumber(number);
+			User.sms.push(number);
+			$("#add-number-form input[name=add-number]").val('');
+		});
+	},
 	
+	whotoalertNextClicked: function() {
+		$("#whotoalert-page").hide();
+		
+		$.post( "ajax/test.html", JSON.stringify(User), function(response) {
+			$("#confirmation-page").show();
+		});
+	}
 	
 }
 
