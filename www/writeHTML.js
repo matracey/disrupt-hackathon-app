@@ -5,21 +5,19 @@ var WriteHTML = {
 			console.log(r, i);
 			var divId = "route"+i;
 			
-			var $newDiv = $("<div id='" + divId + "' />");
+			var $newDiv = $("<button onclick='App.selectRoute(" + i + ")' type='button' class='directions btn btn-default' id='" + divId + "' />");
 			$('#routes').append($newDiv);
 			
 			_.each(r.directions, function(d) {
 				var $directionsDiv = $("<div class='direction'/>");
 				$newDiv.append($directionsDiv);
 				
-				$directionsDiv.append("From: <div class='from'> " + d.from + " </div>");
-				$directionsDiv.append("To: <div class='to'> " + d.to + " </div>");
-				$directionsDiv.append("Line: <div class='line'> " + d.line + " </div>");
+				$directionsDiv.append("<div class='from'><span class='glyphicon glyphicon-random'></span> From: " + d.from + " </div>");
+				$directionsDiv.append("<div class='to'><span class='glyphicon glyphicon-random'></span> To: " + d.to + " </div>");
+				$directionsDiv.append("<div class='line'>Line:  " + d.line + " </div>");
 			});
 			
-			$newDiv.append("Duration: <div class='duration'> " + r.duration + " </div>");
-			
-			$newDiv.append("<a onclick='App.selectRoute(" + i + ")'>Select this route</a><br/><br/><br/>"); //I need the onclick!
+			$newDiv.append("<div class='duration'>Duration: " + r.duration + " </div></button>");
 		});
 	},
 	
