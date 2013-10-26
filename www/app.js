@@ -152,6 +152,10 @@ var App = {
 	},
 	
 	chooseRouteNextClicked: function() {
+		if (!User.transport) {
+			return;
+		}
+		
 		$("#chooseroute-page").hide();
 		$("#whotoalert-page").show();
 		
