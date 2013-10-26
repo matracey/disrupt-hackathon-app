@@ -97,7 +97,9 @@ var App = {
 				}
 			});
 			
-			possibleRoutes.push(option);
+			if (option.directions.length > 0) {
+				possibleRoutes.push(option);
+			}
 		});
 		
 		
