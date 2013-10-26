@@ -33,5 +33,38 @@ var WriteHTML = {
 		var $newDiv = $("<div class='phoneNumber'>" + number + "</div>");
 		
 		$("#phone-numbers-div").append($newDiv);
+	},
+	
+	populationConfirmationPage: function(user) {
+		console.log(user, "has been sent to server");
+		
+		var $newDiv = $("<div id='confirmation-message'/>");
+		$("#confirmation-page").append($newDiv);
+		
+		$newDiv.append("allright sweets, if we think that on any working day you won't be at ");
+		$newDiv.append(user.transport.directions[user.transport.directions.length-1].to);
+		$newDiv.append(" by ");
+		var twodigitsminutes = (User.timeAtWork.getMinutes() < 10) ? '0' + User.timeAtWork.getMinutes() : User.timeAtWork.getMinutes();
+		$newDiv.append(User.timeAtWork.getHours() + ":" + twodigitsminutes);
+		
+		$newDiv.append(" then we'll send email warnings to: ");
+		var $emailsDiv = $("<div id='confirmation-emails'></div>");
+		$newDiv.append($emailsDiv);
+		
+		_.each(user.email, function(e) {
+			var $emailDiv = $("<div class='confirmation-email'>" + e + "</div>");
+			
+			$emailsDiv.append($emailDiv);
+		});
+		
+		$newDiv.append("and text messages warning to: ");
+		var $numbersDiv = $("<div id='confirmation-numbers'></div>");
+		$newDiv.append($numbersDiv);
+		
+		_.each(user.sms, function(s) {
+			var $numberDiv = $("<div class='confirmation-number'>" + s + "</div>");
+			
+			$numbersDiv.append($numberDiv);
+		});
 	}
 }

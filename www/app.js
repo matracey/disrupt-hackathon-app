@@ -100,16 +100,47 @@ var App = {
 			possibleRoutes.push(option);
 		});
 		
-		if (possibleRoutes.length > 3) {
-			possibleRoutes.length = 3;
+		
+		if (possibleRoutes.length > 2) {
+			possibleRoutes.length = 2;
+		}
+		this.possibleRoutes = possibleRoutes;
+		
+		//HERE BE FUCKING DRAGONS
+		//i'm trying to clean up duplicates, hopefully without fucking up
+		/*var cloneRoutes = JSON.parse(JSON.stringify(possibleRoutes));
+		_.each(cloneRoutes, function(r1) {
+			var d1 = r1.directions;
+			
+			_.each(possibleRoutes, function(r2){
+				var d2 = r2.directions;
+				console.log(r1, r2, d1, d2);
+				
+				if (d1[0].line == d2[0].line) {
+					if (!d1[1] || d1[1].line == d2[1].line) {
+						r1.duplicated = true;
+					}
+				}
+			});
+		});
+		
+		console.log(cloneRoutes);
+		for (var i=cloneRoutes.length-1 ; i>0 ; i--) {
+			//kill at most one duplicate
+			if (cloneRoutes[i].duplicated) {
+				cloneRoutes = _.reject(cloneRoutes, function(r){
+					return cloneRoutes[i] == r
+				});
+				return;
+			}
 		}
 		
 		console.log(possibleRoutes);
 		
-		this.possibleRoutes = possibleRoutes;
+		this.possibleRoutes = cloneRoutes;*/
 		
 		$("#chooseroute-page").show();
-		WriteHTML.populateRouteChoice(possibleRoutes);
+		WriteHTML.populateRouteChoice(this.possibleRoutes);
 	},
 	
 	selectRoute: function(i) {
@@ -143,8 +174,12 @@ var App = {
 	whotoalertNextClicked: function() {
 		$("#whotoalert-page").hide();
 		
-		$.post( "ajax/test.html", JSON.stringify(User), function(response) {
+		$.post("APIaddress", JSON.stringify(User), function(response) {
+			
+		}).always(function(){
 			$("#confirmation-page").show();
+			
+			WriteHTML.populationConfirmationPage(User);
 		});
 	}
 	
