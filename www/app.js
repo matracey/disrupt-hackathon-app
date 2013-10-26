@@ -86,7 +86,7 @@ var App = {
 			};
 
 			_.each(trip.steps, function(step){
-				if (step.travel_mode == "TRANSIT" && (step.instructions.indexOf("Subway") != -1 || step.instructions.indexOf("Light rail") != -1)) { //something about getting if it's a tube && .indexOf()
+				if (step.travel_mode == "TRANSIT" && ( step.instructions.indexOf("Subway") != -1 || step.instructions.indexOf("Underground") != -1 || step.instructions.indexOf("Light rail") != -1)) {
 					var obj = {
 						from: step.transit.departure_stop.name,
 						to: step.transit.arrival_stop.name,
