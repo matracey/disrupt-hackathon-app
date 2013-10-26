@@ -37,9 +37,9 @@ var WriteHTML = {
 		console.log(user, "has been sent to server");
 		
 		var $newDiv = $("<div id='confirmation-message'/>");
-		$("#confirmation-page").append($newDiv);
+		$("#confirmation-page").prepend($newDiv);
 		
-		$newDiv.append("allright sweets, if we think that on any working day you won't be at ");
+		$newDiv.append("<br><div class='alert alert-success'><strong>Alright sweets, you're covered by Disrupt!</strong></div> If we think that on any working day you won't be at ");
 		$newDiv.append(user.transport.directions[user.transport.directions.length-1].to);
 		$newDiv.append(" by ");
 		var twodigitsminutes = (User.timeAtWork.getMinutes() < 10) ? '0' + User.timeAtWork.getMinutes() : User.timeAtWork.getMinutes();

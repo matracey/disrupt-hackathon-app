@@ -134,8 +134,10 @@ h1.section-header {
 }
 
 .logobrand {
-  padding-top: 5px;
-  padding-right: 40px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 5px;
+  width:70px;
 }
 
 /*.glyphicon {
@@ -171,4 +173,12 @@ font-weight:bold;
 
 label {
 font-weight:normal;
+}
+
+.logomain {
+  width:30%;
+}
+
+h4.titlepage {
+font-weight:bold;
 }

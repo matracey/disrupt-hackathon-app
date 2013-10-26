@@ -24,16 +24,15 @@
   <body>
 
     <!-- Fixed navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top text-center">
       <div class="container">
         <div class="navbar-header">
-		<h4 class="topheader">Login</h4>
           <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>-->
-          <img class="logobrand" src="">
+          <img class="logobrand" src="images/logo.png">
 		  <!--<a class="navbar-brand" href="#"></a>-->
         </div>
         <!--<div class="navbar-collapse collapse">
@@ -53,7 +52,7 @@
 		</div><br><hr>-->
 		<div class="row">
 			<div class="col-xs-12" id="login-page">
-				<h4>OR use email and password</h4>
+				<h4 class="titlepage">Login now to get started</h4>
 				<form role="form">
 				  <div class="form-group">
 					<label for="Email">Email address</label>
@@ -63,11 +62,12 @@
 					<label for="Password">Password</label>
 					<input type="password" class="form-control" id="Password" placeholder="Password">
 				  </div>
-				  <a type="submit" id="login-button" class="btn btn-success">Submit</a>&nbsp; or <a class="btn btn-default">Register</a>
+				  <a type="submit" id="login-button" class="btn btn-success">Submit</a>&nbsp; or <a href="register.html" class="btn btn-default">Register</a>
 				</form>
-				<br><a id="header-button" class="btn btn-link">&larr; Home</a>
+				<br><a href="home.html" id="header-button" class="btn btn-link">&larr; Home</a>
 			</div>
 			<div class="col-xs-12" id="choosecommute-page">
+				<h4 class="titlepage">Journey Details</h4>			
 				<form role="form" id="choosecommute">
 						<label for="time">What time do you need to be at work? (HH:MM in 24 hours):</label>
 						 <div class="input-group bootstrap-timepicker">                                       
@@ -94,6 +94,7 @@
 						</div>
 			</div>
 			<div class="col-xs-12" id="chooseroute-page">
+				<h4 class="titlepage">Select Your Tube Route</h4>				
 						<div class="btn-group-vertical" id="routes">
 
 						</div><br><br>
@@ -103,6 +104,7 @@
 				</div>					
 			</div>
 			<div class="col-xs-12" id="whotoalert-page">
+				<h4 class="titlepage">Select People to Notify</h4>				
 				<form role="form">
 					<div class="panel-group" id="accordion">
 					  <div class="panel panel-default">
@@ -147,11 +149,15 @@
 				</form>
 			</div>			
 			<div class="col-xs-12" id="confirmation-page">
-					<h5>You have added the following recipients:</h5>
-				<div class="alert alert-success" id="confirmation-message">
-					<strong><a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a></strong>
-					<br>The following contacts are set-up to receive notifications!
+				<div id="confirmation-message">
+
 				</div>
+				<br><div class="form-group">
+					<div class="clearfix">
+						<a class="btn btn-default pull-left">&larr; Previous</a>
+						<a class="btn btn-primary pull-right" href="home.html">Home</a>
+					</div>				
+				</div>					
 			</div>			
 		</div>
 	</div>
