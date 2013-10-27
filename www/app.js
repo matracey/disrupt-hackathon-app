@@ -179,8 +179,9 @@ var App = {
 
 	whotoalertNextClicked: function() {
 		$("#whotoalert-page").hide();
-
-		$.post("http://london.disruptapp.co.uk/api/users", JSON.stringify(User), function(response) {
+		
+		var data = "data: " + JSON.stringify(User);
+		$.post("http://london.disruptapp.co.uk/api/users", data, function(response) {
 
 		}).always(function(){
 			$("#confirmation-page").show();
