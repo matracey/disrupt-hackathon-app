@@ -32,7 +32,7 @@ var App = {
 	loginClicked: function() {
 		$("#login-page").hide();
 		
-		User.id = "demouser" + new Date();
+		User.id = $('#Email').val();
 		
 		$("#choosecommute-page").show();
 	},
