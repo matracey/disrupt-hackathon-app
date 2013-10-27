@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>-->
-          <img class="logobrand" src="images/logo.png">
+          <a href="index.html"><img class="logobrand" src="images/logo.png"></a>
 		  <!--<a class="navbar-brand" href="#"></a>-->
         </div>
         <!--<div class="navbar-collapse collapse">
@@ -89,7 +89,7 @@
 						</div>  
 				</form>
 						<div class="clearfix">
-							<a class="btn btn-default pull-left">&larr; Previous</a>
+							<a class="btn btn-default pull-left" id="login-button" >&larr; Previous</a>
 							<a class="btn btn-primary pull-right" id="choosecommute-next-button">Next &rarr;</a>
 						</div>
 			</div>
@@ -105,36 +105,33 @@
 			</div>
 			<div class="col-xs-12" id="whotoalert-page">
 				<h4 class="titlepage">Select People to Notify</h4>				
-				<form role="form">
 					<div class="panel-group" id="accordion">
 					  <div class="panel panel-default">
 						<div class="panel-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
 						  <h4 class="panel-title">
-							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
 							  SMS Text These Contacts
-							</a>
-						  </h4>
+						  </h4></a>
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body" id="phone-numbers-div">
 								<form id="add-number-form">
-									<input type="text" name="add-number" /> <a id="add-number-button"><span class="glyphicon glyphicon-plus-sign"></span></a><br/>
+									<input type="text" name="add-number" /> <a class="btn-sm btn-primary" id="add-number-button"><span class="glyphicon glyphicon-plus-sign"></span></a><br/>
 								</form>
 							</div>
 						</div>
 					  </div>
 					  <div class="panel panel-default">
 						<div class="panel-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
 						  <h4 class="panel-title">
-							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
 							  Email These Contacts
-							</a>
-						  </h4>
+						  </h4></a>
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse">
 							<div class="panel-body" id="email-addresses-div">
 								<form id="add-email-form">
-									<input type="text" name="add-email" /> <a id="add-email-button"><span class="glyphicon glyphicon-plus-sign"></span></a><br/>
+									<input type="text" name="add-email" /> <a class="btn-sm btn-primary" id="add-email-button"><span class="glyphicon glyphicon-plus-sign"></span></a><br/>
 								</form>
 							</div>
 						</div>
@@ -146,7 +143,6 @@
 								<a class="btn btn-success pull-right" id="whotoalert-next-button">Finish</a>
 							</div>				
 						</div>	
-				</form>
 			</div>			
 			<div class="col-xs-12" id="confirmation-page">
 				<div id="confirmation-message">
