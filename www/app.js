@@ -44,9 +44,9 @@ var App = {
 	
 	directionsService: new google.maps.DirectionsService(),
 	calcRoute: function() {
-	  var start = $("#choosecommute input[name=start-postcode]").val() + "UK";
-	  var end = $("#choosecommute input[name=end-postcode]").val() + "UK";
-	  var time = $("#choosecommute input[name=form-time]").val() + "UK";
+	  var start = $("#choosecommute input[name=start-postcode]").val() + " near london UK";
+	  var end = $("#choosecommute input[name=end-postcode]").val() + " near london UK";
+	  var time = $("#choosecommute input[name=form-time]").val();
 	  var hhmm = time.split(':');
 	  
 	  User.timeAtWork = new Date(2013, 9, 28, parseInt(hhmm[0]), parseInt(hhmm[1]), 0, 0);
