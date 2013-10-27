@@ -181,3 +181,73 @@ font-weight:normal;
 h4.titlepage {
 font-weight:bold;
 }
+
+.direction.Northern {
+background: #000000;
+color:#FFFFFF;
+}
+
+.direction.Bakerloo {
+background: #996633;;
+color:#FFFFFF;
+}
+
+.direction.Central {
+background: #E32017;
+color: #FFFFFF;
+}
+
+.direction.Circle {
+background: #FFD300;
+color: #000000;
+}
+
+.direction.District {
+background: #00782A;
+color: #FFFFFF;
+}
+
+.direction.Hammersmith {
+background: #F3A9BB;
+color: #000000;
+}
+
+.direction.Jubilee {
+background: #A0A5A9;
+color: #000000;
+}
+
+.direction.Metropolitan {
+background: #9B0056;
+color: #FFFFFF;
+}
+
+.direction.Piccadilly {
+background: #003688;
+color: #FFFFFF;
+}
+
+.direction.Victoria {
+background: #0098D4;
+color: #FFFFFF;
+}
+
+.direction.Waterloo {
+background: #95CDBA;
+color: #000000;
+}
+
+.direction.DLR {
+background: #00A4A7;
+color: #FFFFFF;
+}
+
+.direction.Overground {
+background: #EE7C0E;
+color: #FFFFFF;
+}
+
+.direction.Tramlink {
+background: #84B817;
+color: #FFFFFF;
+}

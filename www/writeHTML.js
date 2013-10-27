@@ -9,7 +9,7 @@ var WriteHTML = {
 			$('#routes').append($newDiv);
 			
 			_.each(r.directions, function(d) {
-				var $directionsDiv = $("<div class='direction'/>");
+				var $directionsDiv = $("<div class='direction " + d.line.split(' ')[0] + "'/>");
 				$newDiv.append($directionsDiv);
 				
 				$directionsDiv.append("<div class='from'><span class='glyphicon glyphicon-random'></span> From: " + d.from + " </div>");
@@ -41,11 +41,11 @@ var WriteHTML = {
 		
 		$newDiv.append("<div class='alert alert-success'><strong>Alright sweets, you're covered by Disrupt!</strong></div> If on any working day (M-F) we calculate you'll be late arriving at ");
 		$newDiv.append('<strong><span class="glyphicon glyphicon-random"></span>&nbsp;' + user.transport.directions[user.transport.directions.length-1].to + '</strong>');
-		$newDiv.append(" by ");
+		$newDiv.append(" later than ");
 		var twodigitsminutes = (User.timeAtWork.getMinutes() < 10) ? '0' + User.timeAtWork.getMinutes() : User.timeAtWork.getMinutes();
-		$newDiv.append("<strong><span class='glyphicon glyphicon-time'></span>&nbsp;" + User.timeAtWork.getHours() + ":" + twodigitsminutes + ":</strong><br>");
+		$newDiv.append("<strong><span class='glyphicon glyphicon-time'></span>&nbsp;" + User.timeAtWork.getHours() + ":" + twodigitsminutes + "</strong>: because of TFL transport delays <br>");
 		
-		$newDiv.append("<h4>We'll send email warnings to</h4>");
+		$newDiv.append("<h4>We'll send an email notification of these delays to</h4>");
 		var $emailsDiv = $("<div id='confirmation-emails'></div>");
 		$newDiv.append($emailsDiv);
 		
@@ -55,7 +55,7 @@ var WriteHTML = {
 			$emailsDiv.append($emailDiv);
 		});
 		
-		$newDiv.append("<h4>And send text messages warning to</h4>");
+		$newDiv.append("<h4>And send a text notification of these delays to</h4>");
 		var $numbersDiv = $("<div id='confirmation-numbers'></div>");
 		$newDiv.append($numbersDiv);
 		
