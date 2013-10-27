@@ -175,7 +175,7 @@ font-weight:normal;
 }
 
 .logomain {
-  width:30%;
+  width:25%;
 }
 
 h4.titlepage {
@@ -250,4 +250,17 @@ color: #FFFFFF;
 .direction.Tramlink {
 background: #84B817;
 color: #FFFFFF;
+}
+
+.bolden {
+font-weight: bold;
+font-size: 14px;
+}
+
+.glyphicon.home {
+border-radius: 10px;
+background: blue;
+color: white;
+padding: 10px 10px 10px 10px;
+margin-bottom: 10px
 }
