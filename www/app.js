@@ -8,51 +8,51 @@ var App = {
 		$("#choosecommute-page").hide();
 		$("#whotoalert-page").hide();
 		$("#confirmation-page").hide();
-		
+
 		//next buttons
 		$("#login-button").on("click", function(e){
 			App.loginClicked();
 		});
-		
+
 		$("#choosecommute-next-button").on("click", function(e){
 			App.chooseCommuteNextClicked();
 		});
-		
+
 		$("#chooseroute-next-button").on("click", function(e){
 			App.chooseRouteNextClicked();
 		});
-		
+
 		$("#whotoalert-next-button").on("click", function(e){
 			App.whotoalertNextClicked();
 		});
-		
-		
+
+
 	},
-	
+
 	loginClicked: function() {
 		$("#login-page").hide();
-		
+
 		User.id = $('#Email').val();
-		
+
 		$("#choosecommute-page").show();
 	},
-	
+
 	chooseCommuteNextClicked: function() {
 		$("#choosecommute-page").hide();
 		this.calcRoute();
 	},
-	
+
 	directionsService: new google.maps.DirectionsService(),
 	calcRoute: function() {
 	  var start = $("#choosecommute input[name=start-postcode]").val() + " near london UK";
 	  var end = $("#choosecommute input[name=end-postcode]").val() + " near london UK";
 	  var time = $("#choosecommute input[name=form-time]").val();
 	  var hhmm = time.split(':');
-	  
+
 	  User.timeAtWork = new Date(2013, 9, 28, parseInt(hhmm[0]), parseInt(hhmm[1]), 0, 0);
-	  
+
 	  console.log(parseInt(hhmm[0]),parseInt(hhmm[1]));
-	  
+
 	  var request = {
 	      origin:start,
 	      destination:end,
@@ -71,15 +71,15 @@ var App = {
 	    }
 	  });
 	},
-	
+
 	directionCalculated: function(response) {
 		console.log(response.routes);
-		
+
 		var possibleRoutes = [];
 		_.each(response.routes, function(route) {
-			
+
 			var trip = route.legs[0];
-			
+
 			var option = {
 				duration: trip.duration.text,
 				directions: []
@@ -92,32 +92,32 @@ var App = {
 						to: step.transit.arrival_stop.name,
 						line: step.transit.line.name
 					};
-					
+
 					option.directions.push(obj);
 				}
 			});
-			
+
 			if (option.directions.length > 0) {
 				possibleRoutes.push(option);
 			}
 		});
-		
-		
+
+
 		if (possibleRoutes.length > 2) {
 			possibleRoutes.length = 2;
 		}
 		this.possibleRoutes = possibleRoutes;
-		
+
 		//HERE BE FUCKING DRAGONS
 		//i'm trying to clean up duplicates, hopefully without fucking up
 		/*var cloneRoutes = JSON.parse(JSON.stringify(possibleRoutes));
 		_.each(cloneRoutes, function(r1) {
 			var d1 = r1.directions;
-			
+
 			_.each(possibleRoutes, function(r2){
 				var d2 = r2.directions;
 				console.log(r1, r2, d1, d2);
-				
+
 				if (d1[0].line == d2[0].line) {
 					if (!d1[1] || d1[1].line == d2[1].line) {
 						r1.duplicated = true;
@@ -125,7 +125,7 @@ var App = {
 				}
 			});
 		});
-		
+
 		console.log(cloneRoutes);
 		for (var i=cloneRoutes.length-1 ; i>0 ; i--) {
 			//kill at most one duplicate
@@ -136,39 +136,39 @@ var App = {
 				return;
 			}
 		}
-		
+
 		console.log(possibleRoutes);
-		
+
 		this.possibleRoutes = cloneRoutes;*/
-		
+
 		$("#chooseroute-page").show();
 		WriteHTML.populateRouteChoice(this.possibleRoutes);
 	},
-	
+
 	selectRoute: function(i) {
 		console.log(i, App.possibleRoutes[i]);
-		
+
 		User.transport = App.possibleRoutes[i];
 	},
-	
+
 	chooseRouteNextClicked: function() {
 		if (!User.transport) {
 			return;
 		}
-		
+
 		$("#chooseroute-page").hide();
 		$("#whotoalert-page").show();
-		
+
 		User.email = [];
 		User.sms = [];
-		
+
 		$("#add-email-button").on('click', function() {
 			var email = $("#add-email-form input[name=add-email]").val();
 			WriteHTML.writeOneNewEmail(email);
 			User.email.push(email);
 			var email = $("#add-email-form input[name=add-email]").val('');
 		});
-		
+
 		$("#add-number-button").on('click', function() {
 			var number = $("#add-number-form input[name=add-number]").val();
 			WriteHTML.writeOneNewNumber(number);
@@ -176,19 +176,19 @@ var App = {
 			$("#add-number-form input[name=add-number]").val('');
 		});
 	},
-	
+
 	whotoalertNextClicked: function() {
 		$("#whotoalert-page").hide();
-		
-		$.post("APIaddress", JSON.stringify(User), function(response) {
-			
+
+		$.post("http://london.disruptapp.co.uk/api/users", JSON.stringify(User), function(response) {
+
 		}).always(function(){
 			$("#confirmation-page").show();
-			
+
 			WriteHTML.populationConfirmationPage(User);
 		});
 	}
-	
+
 }
 
 $(document).ready(function() {
