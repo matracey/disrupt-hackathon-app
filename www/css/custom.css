@@ -41,9 +41,10 @@ hr.icons {
   margin: 5px 0;
 }
 
-#section-banner {
+#home{
   background:#FFFFFF;
   color:#444444;
+  margin-top:-70px;
 }
 
 #section-hero {

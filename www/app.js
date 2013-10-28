@@ -4,12 +4,18 @@ var User = {
 
 var App = {
 	startup: function() {
+		$("#topheader").hide();
+		$("#login-page").hide();	
 		$("#chooseroute-page").hide();
 		$("#choosecommute-page").hide();
 		$("#whotoalert-page").hide();
 		$("#confirmation-page").hide();
 
 		//next buttons
+		$("#login").on("click", function(e){
+			App.loginpageClicked();
+		});				
+		
 		$("#login-button").on("click", function(e){
 			App.loginClicked();
 		});
@@ -29,6 +35,13 @@ var App = {
 
 	},
 
+	loginpageClicked: function() {
+		$("#home").hide();
+		
+		$("#login-page").show();
+		$("#topheader").show();
+	},	
+	
 	loginClicked: function() {
 		$("#login-page").hide();
 
