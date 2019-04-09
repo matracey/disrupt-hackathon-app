@@ -25,3 +25,8 @@ platforms/*
 # End of https://www.gitignore.io/api/cordova,apachecordova
 
 /nbproject
+
+*DS_Store
+Thumbs.db
+vendor
+logs
