@@ -4,12 +4,20 @@ var User = {
 
 var App = {
 	startup: function() {
+		$("#topheader").hide();
+		$("#login-page").hide();	
 		$("#chooseroute-page").hide();
 		$("#choosecommute-page").hide();
 		$("#whotoalert-page").hide();
 		$("#confirmation-page").hide();
+		console.log($(location).attr('pathname'));
+		if($(location).attr('pathname') == '') App.initialiseTimePicker();
 
 		//next buttons
+		$("#login").on("click", function(e){
+			App.loginpageClicked();
+		});				
+		
 		$("#login-button").on("click", function(e){
 			App.loginClicked();
 		});
@@ -29,6 +37,13 @@ var App = {
 
 	},
 
+	loginpageClicked: function() {
+		$("#home").hide();
+		
+		$("#login-page").show();
+		$("#topheader").show();
+	},	
+	
 	loginClicked: function() {
 		$("#login-page").hide();
 
@@ -179,24 +194,24 @@ var App = {
 
 	whotoalertNextClicked: function() {
 		$("#whotoalert-page").hide();
-
-		$.post("http://london.disruptapp.co.uk/api/users", JSON.stringify(User), function(response) {
+		
+		var data = "data: " + JSON.stringify(User);
+		$.post("http://london.disruptapp.co.uk/api/users", data, function(response) {
 
 		}).always(function(){
 			$("#confirmation-page").show();
 
 			WriteHTML.populationConfirmationPage(User);
 		});
-	}
-
+	},
 }
 
 $(document).ready(function() {
 	App.startup();
 });
 
-_.uniqObjects = function( arr ){
-	return _.uniq( _.collect( arr, function( x ){
-		return JSON.stringify( x );
-	}));
-};
+// _.uniqObjects = function( arr ){
+// 	return _.uniq( _.collect( arr, function( x ){
+// 		return JSON.stringify( x );
+// 	}));
+// };
